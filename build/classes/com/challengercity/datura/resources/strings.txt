@@ -1,0 +1,80 @@
+// Begin Menus
+menu_main_multiplayer=Enter World
+menu_main_exit=Quit
+menu_main_back=Back
+menu_main_cancel=Cancel
+menu_main_options=Options
+menu_main_login=Login
+menu_main_logout=Logout
+
+menu_options_fullscreen=Toggle Fullscreen
+
+menu_login_enterInfo=Please enter your username and password
+menu_login_submit=Login
+menu_login_create=Create Account
+
+menu_game_leave=Leave
+
+server_disconnect=Disconnected from server
+server_lost=Could not connect to the server
+server_deny=Denied connection to server
+server_connecting=Connecting to server, please wait...
+
+
+// Begin Items
+item_coin_copper=Copper Coin
+item_coin_silver=Silver Coin
+item_coin_gold=Gold Coin
+
+item_ore=Ore
+
+item_pickaxe_copper=Copper Pickaxe
+item_pickaxe_bronze=Bronze Pickaxe
+item_pickaxe_iron=Iron Pickaxe
+item_pickaxe_titanium=Titanium Pickaxe
+item_pickaxe_tungsten=Tungsten Pickaxe
+item_pickaxe_zinc=Zinc Pickaxe
+item_pickaxe_steel=Steel Pickaxe
+
+item_ingot_copper=Copper Ingot
+item_ingot_bronze=Bronze Ingot
+item_ingot_iron=Iron Ingot
+item_ingot_titanium=Titanium Ingot
+item_ingot_tungsten=Tungsten Ingot
+item_ingot_zinc=Zinc Ingot
+item_ingot_steel=Steel Ingot
+item_ingot_gold=Gold Ingot
+
+item_potion_speed=Speed Potion
+item_potion_health=Health Potion
+item_potion_vision=Sight Potion
+item_potion_invisibility=Invisibility Potion
+
+item_trap_pit=Pit Trap
+item_trap_blind=Smoke Trap
+item_trap_slow=Slowness Trap
+item_trap_poison=Poison Trap
+item_trap_collapse=Collapsing Trap
+item_trap_confuse=Confuse Trap
+item_trap_reverse=Reverse Trap
+
+item_sword_copper=Copper Sword
+item_sword_bronze=Bronze Sword
+item_sword_iron=Iron Sword
+item_sword_titanium=Titanium Sword
+item_sword_tungsten=Tungsten Sword
+item_sword_zinc=Zinc Sword
+item_sword_steel=Steel Sword
+
+item_bow_wood=Wood Bow
+item_bow_polymer=Polymer Bow
+
+item_sling_shot=Slingshot
+
+item_furniture_chair_basic=Basic Chair
+item_furniture_table_basic=Basic Table
+item_furniture_machine_computer=Computer
+item_furniture_machine_purifier=Ore Purifier
+item_furniture_machine_transmutator=Transmutation Machine
+
+item_tracer=Tracer
