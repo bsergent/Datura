@@ -1,6 +1,12 @@
 
 package com.challengercity.datura;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
@@ -43,9 +49,9 @@ public class Datura {
     public static final String PREF_USERNAME = "Username";
     public static final String PREF_SKINADDRESS = "SkinAddress";
 
-    public Datura() {
+    public Datura(String[] args) {
         if (DEBUG) username = "Debugger";
-        run();
+        run(args);
     }
     
     public static Datura getGameInstance() {
@@ -74,7 +80,7 @@ public class Datura {
     
     public static void main(String[] args) {
         Datura.build = getRbTok("BUILD");
-        ug = new Datura();
+        ug = new Datura(args);
     }
     
     public static String getRbTok(String propToken) { 
@@ -157,10 +163,7 @@ public class Datura {
                                 freq = targetDisplayMode.getFrequency();
                             }
                         }
-
-                        // if we've found a match for bpp and frequence against the 
-                        // original display mode then it's probably best to go for this one
-                        // since it's most likely compatible with the monitor
+                        
                         if ((current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel()) &&
                             (current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())) {
                                 targetDisplayMode = current;
@@ -185,8 +188,35 @@ public class Datura {
         }
     }
     
-    private void run() {
-        Datura.log(getClass(), "Initialized - v"+version);
+    private void run(String[] args) {
+        Datura.log(getClass(), "Initialized - v"+version+" - b"+build);
+        
+        if (args.length > 0) {
+            sessionID = args[0];
+            log(Datura.class, "SessionID: "+sessionID);
+            
+            try {
+                URLConnection connection = new URL("http://challengercity.com/v4/account/getUsernameFromSession.php").openConnection();
+                String query = "sessionId="+sessionID;
+                connection.setDoOutput(true);
+                OutputStream output = connection.getOutputStream();
+                output.write(query.getBytes());
+                BufferedReader postIn = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String postInputLine;
+                String postResult = "";
+                while ((postInputLine = postIn.readLine()) != null) 
+                    postResult = postResult + postInputLine;
+                postIn.close();
+                if (postResult.startsWith("1")) {
+                    username = postResult.substring(2);
+                    Datura.log(getClass(), "Username: "+username);
+                } else {
+                    Datura.log(getClass(), "Username: Failed to retrieve");
+                }
+            } catch (IOException ex) {
+                Datura.log(getClass(), "Username: Failed to retrieve");
+            }
+        }
         
         try {
             setDisplayMode(screenWidth, screenHeight, prefsNode.getBoolean(PREF_FULLSCREEN, false));
