@@ -1,6 +1,7 @@
 
 package com.challengercity.datura;
 
+import static com.challengercity.datura.GUIText.font48;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
@@ -39,6 +40,8 @@ public class ScreenGame extends Screen {
         b = new GUITextX(1, 46, 12, false);
         addToRenderList(b);
         b = new GUITextY(1, 61, 12, false);
+        addToRenderList(b);
+        b = new GUITextDelta(1, 76, 12, false);
         addToRenderList(b);
         chatWindow = new GUIChat(Datura.screenWidth/2-440,0,880,160);
         addToRenderList(chatWindow);
@@ -258,6 +261,52 @@ public class ScreenGame extends Screen {
                     label = "Y: "+(Datura.getCurrentRoom()!=null?Datura.getCurrentRoom().getPlayerFromId(MPClient.getOwnId()).posY:0);
                 } catch (Exception ex) {
                     label = "Y: 0";
+                }
+                if (font48 == null || font36 == null || font24 == null || font16 == null || font12 == null) {
+                    loadFonts();
+                }
+                switch (fontSize) {
+                    case 48:
+                        font = font48;
+                        break;
+                    case 36:
+                        font = font36;
+                        break;
+                    case 24:
+                        font = font24;
+                        break;
+                    case 16:
+                        font = font16;
+                        break;
+                    case 12:
+                        font = font12;
+                        break;
+                }
+                int strPosX = posX;
+                int strPosY = posY;
+                if (centered) {
+                    strPosX = posX+width/2-(font.getWidth(label)/2);
+                    strPosY = posY+height/2-(font.getHeight(label)/2);
+                }
+                font.drawString(strPosX, strPosY, label);
+            }
+        }
+    }
+    
+    public class GUITextDelta extends GUIText {
+        public GUITextDelta (int x, int y, int fontSize, boolean centered) {
+            super(x, y, "Blank", fontSize, centered);
+        }
+        
+        public TrueTypeFont font;
+        
+        @Override
+        public void draw() {
+            if (visible) {
+                try {
+                    label = "Delta: "+Datura.lastDelta;
+                } catch (Exception ex) {
+                    label = "Delta: 0";
                 }
                 if (font48 == null || font36 == null || font24 == null || font16 == null || font12 == null) {
                     loadFonts();

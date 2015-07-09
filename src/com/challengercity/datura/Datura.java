@@ -18,11 +18,12 @@ public class Datura {
 
     private Renderer renderer;
     private static Controller control;
-    private static String gameName = "Datura";
-    private static String version = "0.7.8 Alpha";
+    private static final String gameName = "Datura";
+    private static final String version = "0.7.8A";
     private static String build;
-    final static ResourceBundle rb = ResourceBundle.getBundle("version"); 
+    private static final ResourceBundle rb = ResourceBundle.getBundle("version"); 
     private static String username = "";
+    private static String sessionID;
     public static long lastPing = 0;
     public static Screen currentScreen;
     public static boolean fullscreen = false;

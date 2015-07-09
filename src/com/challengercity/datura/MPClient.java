@@ -59,7 +59,7 @@ public class MPClient {
                             ViewPort.centerView(15*Tile.SIZE, 15*Tile.SIZE);
                             ScreenGame.requestingRoom = false;
                         }
-                    } else if (object instanceof PacketEntityPosition) {
+                    } else if (object instanceof PacketEntityPosition) { // TODO Only read most recent position packets
                         PacketEntityPosition pep = (PacketEntityPosition) object;
                         Entity e = Datura.getCurrentRoom().getEntityFromId(pep.id);
                         if (e != null) {

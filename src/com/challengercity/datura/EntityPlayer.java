@@ -61,7 +61,7 @@ public class EntityPlayer extends EntityLiving {
                         speed = 4;
                     }
                     if ((Controller.isKeyDown(Keyboard.KEY_A) || Controller.isKeyDown(Keyboard.KEY_LEFT)) && !ScreenGame.paused) {
-                        motionX = (byte) -speed; // Does this work?
+                        motionX = (byte) -speed;
                         motionY = 0;
                         facing=0;
                     }
