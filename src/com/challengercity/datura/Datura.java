@@ -9,23 +9,26 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.prefs.Preferences;
-import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import static org.lwjgl.opengl.GL11.glViewport;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
 
 /**
  *
- * @author Sgrt.
+ * @author Ben Sergent V at http://sergenttech.net/
  */
-public class Datura {
+public class Datura extends org.newdawn.slick.BasicGame {
 
     private Renderer renderer;
     private static Controller control;
-    private static final String gameName = "Datura";
-    private static final String version = "0.7.8A";
+    private static final String GAMENAME = "Datura";
+    private static final String VERSION = "0.7.8A";
     private static String build;
     private static final ResourceBundle rb = ResourceBundle.getBundle("version"); 
     private static String username = "";
@@ -39,19 +42,22 @@ public class Datura {
     private static long lastFPS;
     private static int fps;
     public static int currentFPS;
-    public static long lastDelta;
     public static int guiCooldown = 0;
     private static Datura ug;
     public static final boolean DEBUG = true;
     
     public static Preferences prefsNode = Preferences.userNodeForPackage(Datura.class);
-    public static final String PREF_FULLSCREEN = "Fullscreen";
-    public static final String PREF_USERNAME = "Username";
-    public static final String PREF_SKINADDRESS = "SkinAddress";
+    public static final String PREF_FULLSCREEN = "fullscreen";
+    public static final String PREF_USERNAME = "username";
+    public static final String PREF_SKINADDRESS = "skinAddress";
 
     public Datura(String[] args) {
-        if (DEBUG) username = "Debugger";
-        run(args);
+        super(GAMENAME+" - v"+VERSION);
+        if (args.length > 0) {
+            sessionID = args[0];
+            log(Datura.class, "SessionID: "+sessionID);
+        }
+        
     }
     
     public static Datura getGameInstance() {
@@ -59,7 +65,7 @@ public class Datura {
     }
     
     public static String getVersion() {
-        return version;
+        return VERSION;
     }
     
     public static String getBuild() {
@@ -67,7 +73,7 @@ public class Datura {
     }
     
     public static String getGameName() {
-        return gameName;
+        return GAMENAME;
     }
     
     public static String getUsername() {
@@ -81,6 +87,14 @@ public class Datura {
     public static void main(String[] args) {
         Datura.build = getRbTok("BUILD");
         ug = new Datura(args);
+        try {
+            ug = new Datura(args);
+            AppGameContainer container = new AppGameContainer(ug);
+            container.setDisplayMode(1280,720,false);
+            container.start();
+        } catch (SlickException ex) {
+            ex.printStackTrace();
+        }
     }
     
     public static String getRbTok(String propToken) { 
@@ -113,21 +127,6 @@ public class Datura {
         return (Sys.getTime() * 1000) / Sys.getTimerResolution();
     }
     
-    public int getDelta() {
-        long time = getTime();
-        int delta = (int) (time - lastFrame);
-        lastFrame = time;
-
-        if (delta > (1000/60)*3) {
-            delta = (1000/60)*3;
-        }
-        if (delta < (1000/60)) {
-            delta = 1000/60;
-        }
-        lastDelta = delta;
-        return delta;
-    }
-    
     public void updateFPS() {
         if (getTime() - lastFPS > 1000) { 
             currentFPS=fps;
@@ -137,64 +136,12 @@ public class Datura {
         fps++;
     }
     
-    public static void setDisplayMode(int width, int height, boolean fullscreen) {
-
-        // return if requested DisplayMode is already set
-        if ((Display.getDisplayMode().getWidth() == width) && 
-            (Display.getDisplayMode().getHeight() == height) && 
-            (Display.isFullscreen() == fullscreen)) {
-                return;
-        }
-
-        try {
-            DisplayMode targetDisplayMode = null;
-
-            if (fullscreen) {
-                DisplayMode[] modes = Display.getAvailableDisplayModes();
-                int freq = 0;
-
-                for (int i=0;i<modes.length;i++) {
-                    DisplayMode current = modes[i];
-
-                    if ((current.getWidth() == width) && (current.getHeight() == height)) {
-                        if ((targetDisplayMode == null) || (current.getFrequency() >= freq)) {
-                            if ((targetDisplayMode == null) || (current.getBitsPerPixel() > targetDisplayMode.getBitsPerPixel())) {
-                                targetDisplayMode = current;
-                                freq = targetDisplayMode.getFrequency();
-                            }
-                        }
-                        
-                        if ((current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel()) &&
-                            (current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())) {
-                                targetDisplayMode = current;
-                                break;
-                        }
-                    }
-                }
-            } else {
-                targetDisplayMode = new DisplayMode(width,height);
-            }
-
-            if (targetDisplayMode == null) {
-                System.out.println("Failed to find value mode: "+width+"x"+height+" fs="+fullscreen);
-                return;
-            }
-
-            Display.setDisplayMode(targetDisplayMode);
-            Display.setFullscreen(fullscreen);
-
-        } catch (LWJGLException e) {
-            System.out.println("Unable to setup mode "+width+"x"+height+" fullscreen="+fullscreen + e);
-        }
-    }
-    
-    private void run(String[] args) {
-        Datura.log(getClass(), "Initialized - v"+version+" - b"+build);
+    @Override
+    public void init(GameContainer gc) {
+        Datura.log(getClass(), "Initializing - v"+VERSION+" - b"+build);
+        if (DEBUG) username = "Debugger";
         
-        if (args.length > 0) {
-            sessionID = args[0];
-            log(Datura.class, "SessionID: "+sessionID);
-            
+        if (!"".equals(sessionID)) {
             try {
                 URLConnection connection = new URL("http://challengercity.com/v4/account/getUsernameFromSession.php").openConnection();
                 String query = "sessionId="+sessionID;
@@ -218,39 +165,38 @@ public class Datura {
             }
         }
         
-        try {
-            setDisplayMode(screenWidth, screenHeight, prefsNode.getBoolean(PREF_FULLSCREEN, false));
-            Display.setTitle(gameName+" - v"+version);
-            Display.create();
-            glViewport(0, 0, Display.getWidth(), Display.getHeight());
-            screenHeight=Display.getHeight();
-            screenWidth=Display.getWidth();
-            ViewPort.updateView();
-        } catch(Exception ex) {
-            Datura.log(getClass(), "Could not setup display");
-            System.exit(1);
-        }
-        
         ResourcePool.loadFrequentResources();
         
         renderer = new Renderer(this);
         currentScreen = new ScreenMenu();
-        control = new Controller(); // Listen for input
         
         lastFPS = getTime();
-        getDelta();
         
-        while(!Display.isCloseRequested()) { // Game Loop
-            Controller.checkInput();
-            currentScreen.tick(getDelta());
-            currentScreen.mouseUpdate();
-            updateFPS();
-            renderer.render();
-            Display.sync(60);
+        Datura.log(getClass(), "Initialized");
+        
+        try {
+            defaultMap = new TiledMap("/src/com/challengercity/datura/resources/defaultMap.tmx", "/src/com/challengercity/datura/resources");
+        } catch (SlickException ex) {
+            Logger.getLogger(Datura.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(1);
         }
-        
-        Display.destroy();
-        System.exit(0);
     }
+
+    @Override
+    public void update(GameContainer container, int delta) throws SlickException {
+        Input input = container.getInput();
+        //Controller.checkInput();
+        //currentScreen.tick(delta);
+        //currentScreen.mouseUpdate();
+    }
+
+    @Override
+    public void render(GameContainer container, Graphics g) throws SlickException {
+        updateFPS();
+        //renderer.render();
+        defaultMap.render(0, 0);
+    }
+    
+    private TiledMap defaultMap;
 
 }

@@ -3,7 +3,7 @@ package com.challengercity.datura;
 
 /**
  *
- * @author Ben Sergent V/ha1fBit
+ * @author Ben Sergent V at http://sergenttech.net/
  */
 public class ScreenOptions extends Screen {
 
@@ -30,7 +30,7 @@ public class ScreenOptions extends Screen {
         if (actionId==0) {
             if (!Datura.fullscreen) {
                 try {
-                    Datura.setDisplayMode(Datura.screenWidth, Datura.screenHeight, true); // 1280, 720  |  2560, 1440 | 640, 480
+                    //Datura.setDisplayMode(Datura.screenWidth, Datura.screenHeight, true); // 1280, 720  |  2560, 1440 | 640, 480
                     Datura.fullscreen=true;
                     Datura.prefsNode.putBoolean(Datura.PREF_FULLSCREEN, true);
                 } catch (Exception ex) {
@@ -38,7 +38,7 @@ public class ScreenOptions extends Screen {
                 }
             } else {
                 try {
-                    Datura.setDisplayMode(Datura.screenWidth, Datura.screenHeight, false); // 1280, 720  |  2560, 1440 | 640, 480
+                    //Datura.setDisplayMode(Datura.screenWidth, Datura.screenHeight, false); // 1280, 720  |  2560, 1440 | 640, 480
                     Datura.fullscreen=false;
                     Datura.prefsNode.putBoolean(Datura.PREF_FULLSCREEN, false);
                 } catch (Exception ex) {

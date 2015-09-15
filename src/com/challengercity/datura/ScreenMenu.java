@@ -5,7 +5,7 @@ import org.lwjgl.opengl.Display;
 
 /**
  *
- * @author Ben Sergent V/ha1fBit
+ * @author Ben Sergent V at http://sergenttech.net/
  */
 public class ScreenMenu extends Screen {
 

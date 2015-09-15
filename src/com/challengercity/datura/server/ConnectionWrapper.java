@@ -5,7 +5,7 @@ import com.esotericsoftware.kryonet.Connection;
 
 /**
  *
- * @author Ben Sergent V/ha1fBit
+ * @author Ben Sergent V at http://sergenttech.net/
  */
 public class ConnectionWrapper {
 

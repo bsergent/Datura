@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" backgroundcolor="#939393" nextobjectid="9">
+ <properties>
+  <property name="weather" value="clear"/>
+ </properties>
+ <tileset firstgid="1" name="Overworld1" tilewidth="16" tileheight="16">
+  <image source="Overworld1.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="Grass" tile="36"/>
+   <terrain name="Water" tile="113"/>
+   <terrain name="Brick Path" tile="161"/>
+  </terraintypes>
+  <tile id="0" terrain=",,,0"/>
+  <tile id="1" terrain=",,0,0"/>
+  <tile id="2" terrain=",,0,"/>
+  <tile id="3" terrain="0,0,0,"/>
+  <tile id="4" terrain="0,0,,0"/>
+  <tile id="16" terrain=",0,,0"/>
+  <tile id="17" terrain="0,0,0,0"/>
+  <tile id="18" terrain="0,,0,"/>
+  <tile id="19" terrain="0,,0,0"/>
+  <tile id="20" terrain=",0,0,0"/>
+  <tile id="32" terrain=",0,,"/>
+  <tile id="33" terrain="0,0,,"/>
+  <tile id="34" terrain="0,,,"/>
+  <tile id="35" terrain="0,0,0,0"/>
+  <tile id="36" terrain="0,0,0,0"/>
+  <tile id="37" terrain="0,0,0,0"/>
+  <tile id="96" terrain=",,,1"/>
+  <tile id="97" terrain=",,1,1"/>
+  <tile id="98" terrain=",,1,"/>
+  <tile id="99" terrain="1,1,1,"/>
+  <tile id="100" terrain="1,1,,1"/>
+  <tile id="112" terrain=",1,,1"/>
+  <tile id="113" terrain="1,1,1,1"/>
+  <tile id="114" terrain="1,,1,"/>
+  <tile id="115" terrain="1,,1,1"/>
+  <tile id="116" terrain=",1,1,1"/>
+  <tile id="128" terrain=",1,,"/>
+  <tile id="129" terrain="1,1,,"/>
+  <tile id="130" terrain="1,,,"/>
+  <tile id="131" terrain="1,1,1,1"/>
+  <tile id="132" terrain="1,1,1,1"/>
+  <tile id="144" terrain=",,,2"/>
+  <tile id="145" terrain=",,2,2"/>
+  <tile id="146" terrain=",,2,"/>
+  <tile id="147" terrain="2,2,2,"/>
+  <tile id="148" terrain="2,2,,2"/>
+  <tile id="160" terrain=",2,,2"/>
+  <tile id="161" terrain="2,2,2,2"/>
+  <tile id="162" terrain="2,,2,"/>
+  <tile id="163" terrain="2,,2,2"/>
+  <tile id="164" terrain=",2,2,2"/>
+  <tile id="176" terrain=",2,,"/>
+  <tile id="177" terrain="2,2,,"/>
+  <tile id="178" terrain="2,,,"/>
+  <tile id="179" terrain="2,2,2,2"/>
+  <tile id="180" terrain="2,2,2,2"/>
+ </tileset>
+ <tileset firstgid="257" name="Collision" tilewidth="16" tileheight="16">
+  <image source="Collision.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Ground1" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   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
+  </data>
+ </layer>
+ <layer name="Ground2" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2cWZLTMBCG9cQRuB/bAdjegQwHYBneCcMBGCYHYLkAcAKYi6CuSVc6GlmS5Tiy4++r6nLVxJO49KvV7dbiHAAAAAAAAAAAtOBO6weAKHdbPwAAuDfe3mbsXbOnWx4fvW28XUVM/r729qnZ0y0P1eO9t8sO+9rs6ZaH6CG+gA9MA/UP9LjNPW/3t/ZgwPdIjC6NwaIHMSLOY29PtvbM1WsibVzSvqLbZ3ejx4Ujj7KIbzx3Oz1UE+srNjf94LrzU2nji8L7Nm6XX11E7lmqRtY3Qnu6vUdjr81PN+aqtjafrwOzeay92nvt9y91HHvp7ZEr0yOVm4Z27m7aOPY/527/fSN2z5Jz3ZgmD72ttp/X5KapeP3F0fY5RJNXxlQLG3v76rHkcaeWXB1JtajRo+X7xVznD7TdbL5j46teZYzvM67gH3XIWC7xNRer+47xvO/VU/oe1/c7qYfUMZYeY45XpzyPOUc9utBa3JA6XGta62HrmUPqmrb2M6QO15pWeqgOYf2stj1t7ee129UX5sZYeqTyK9uXpe3O3HBN9J1Waw3osf+dqfxK+7LVQWo0tj1r21R1WeVunCjyDnLoGpL6R1h/lzq69Y0zY9r2dtyZax+fGuofYd1d/CX0DdVD511sPJlzXJ4SXTV68UOtJ6sOXfMvOU3mWqNqQS6eh5qISVy3ceQUYvNUKKlfhfMuqsMquGfOsXkqlNYT7bwLbT4e1Nunxdj13dQ82lLXpqQY2z9sPn3l9te24JO30TULY61ViOXTum4FPYbT910ili8wB9aO2HiIHu1QPexa05p1SdCf2Fim41VsLQx6HJ9wjSPrHWGKUGMFAAAAAIAUv7z9PuIV0vzw9tPbX2//Rrzq70CaQ/XbP0f6nVPnUP32envt0gX/KOPQ/fa64+/4RxnH6rf4Rxnab2XNTOrcl9z6mReFvwNptN+Gc2zheTAl5xh+8/Y98zuQRvttao5N18/k5j9TPoB/lBHrt3ZfquZLJWva9F2j72eww/Zbu6dS9yhpvqTrZ0rOGGPtZj3WP2Svku6ntHvGBPWP8Owwe3ZV7AwyztDth/UPq4dc7V6kXHwpMdZ65FH/0H2Vdo+S3R+mudPQK6RR/1DfCPe56rhFffc4aN4TngkXng93qDovAAAAAAAAAAAAAAAAAAAAAAAAwH9N4LjKQJwAAA==
+  </data>
+ </layer>
+ <layer name="Buildings" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3cwU1CQRSGUQoQtABUCgCxABULQKUAFPqvgn/BgkwCjxAf88g7J/l2dzG7SSaTOxgAAAAAAABAPyzTV/pOP2l1ZO4uDdMo3R/0cIUz9sk6/aa/tEnbI3Pj9Jie0vNBk9ZP2C/TNEsvaZ5eG+bm+9mmeS7zlt7TR1qkz4a5xX62aR4AAAAAairf372711W+v0+qnoZz3+m5jnPf6QEAAAAAAAAAAAD4X/6dd4t/593i33m3+Hd+u8pdZKf2kdG+chfZqX1ktK/cMea+qavcMea+AQAAAAAAAAAAAACAenYHA+2FQJwAAA==
+  </data>
+ </layer>
+ <layer name="Details" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3cMQrCMBiG4RzXJdLRMVezegHFC+hJDBWLDlbB4K/1eeAbC+8UyNCkBAAAAAAAAADMSZdSiW4AmFKiAwAAAABgQhcdAAAAAAAAAAAAAITb1G2jIxjt6vbREYyOdafoCAaHN79f1/UtQmjy3ouz7rs465iTfLNlcAuve/aPU75fyZ71aWIVHQA/4Ho+PbqPlA91cLGIDgAAAAAAAAAAAAD4E2fftOFgQJwAAA==
+  </data>
+ </layer>
+ <layer name="Collision" width="100" height="100" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YQQqDMBBAUVPvf+euSqelJpOQBKHvwezUxXwI6nEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBKKXuHOj3upbW77B5b1+iRM7vH1bV65NR6nAP7izsf6frvVp71evQb2VO2nx79ZvaoPUuPnLins3xO6x495vu1p0d5T+0cqr0HfI8eOXFPsUOtB+u0erBXq0dsMvI9Qp9Xj6sW8dzy/2o9Pe5FDwAAAAAAAAAAAHZ7Ap2JPoFAnAAA
+  </data>
+ </layer>
+ <objectgroup name="Objects" visible="0">
+  <object id="1" name="Barrel" type="Container" x="624" y="1056" width="16" height="16"/>
+  <object id="2" name="Sign" type="Info" x="432" y="1040" width="16" height="16">
+   <properties>
+    <property name="text" value="Blue House"/>
+   </properties>
+  </object>
+  <object id="3" name="Sign" type="Info" x="544" y="1104" width="16" height="16">
+   <properties>
+    <property name="text" value="Brown House"/>
+   </properties>
+  </object>
+  <object id="4" name="Sign" type="Info" x="480" y="1152" width="16" height="16">
+   <properties>
+    <property name="text" value="Fish at the dark blue dots"/>
+   </properties>
+  </object>
+  <object id="5" name="Barrel" type="Container" x="608" y="1152" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="Doors" visible="0">
+  <object id="6" name="Blue" type="Door" x="384" y="1040" width="16" height="16">
+   <properties>
+    <property name="dest" value="test&gt;house1"/>
+   </properties>
+  </object>
+  <object id="7" name="Brown" type="Door" x="560" y="1104" width="16" height="16">
+   <properties>
+    <property name="dest" value="test&gt;house2"/>
+   </properties>
+  </object>
+  <object id="8" name="EastPath" type="Door" x="768" y="1120" width="16" height="48">
+   <properties>
+    <property name="dest" value="test2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

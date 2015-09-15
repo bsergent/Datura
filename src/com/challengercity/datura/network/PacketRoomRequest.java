@@ -5,7 +5,7 @@ import com.challengercity.datura.Door;
 
 /**
  *
- * @author Ben Sergent V/ha1fBit
+ * @author Ben Sergent V at http://sergenttech.net/
  */
 public class PacketRoomRequest extends Packet {
 

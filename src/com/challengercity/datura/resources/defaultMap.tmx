@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Overworld1" tilewidth="32" tileheight="32">
+  <image source="Overworld1.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="10" height="10">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NkYGBgJBEzkKFHkgw9tDRnsNoPADlJNe2QAQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="10" height="10">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGFhgSKQ6SwrtMaJQP70AAE1V5A+QAQAA
+  </data>
+ </layer>
+</map>
